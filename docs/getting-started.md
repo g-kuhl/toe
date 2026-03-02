@@ -111,3 +111,4 @@ Agents coordinate through:
 - Read [Architecture](architecture.md) to understand how agents work together
 - Check [Agent Reference](agent-reference.md) for detailed agent descriptions
 - See [Examples](examples.md) for real-world workflows
+- **Administrators**: See [Web App Guide](web-app.md) to run the browser-based Agent Manager for editing agents

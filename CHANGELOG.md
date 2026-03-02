@@ -15,8 +15,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Email Communication System**: Agents now use `.agents/email/` for async communication
   - Email format: `to-[name]-from-[yourname].email`
   - Replaces the previous inbox system
+- **Agent Manager Web App**: Complete Deno/TypeScript web server for managing `.agent.md` files via browser
+  - `web/server.ts`: HTTP server entry point using `Deno.serve`; serves static files from `web/public/`; configurable via env vars (`PORT`, `TOE_AGENT_ROOT`, `TOE_ADMIN_USERNAME`, `TOE_ADMIN_PASSWORD_HASH`)
+  - `web/config.ts`: Centralised configuration with `SESSION_TTL_MS` (8h), `MAX_BODY_BYTES` (512 KB), `MAX_AGENT_CONTENT_BYTES` (256 KB)
+  - `web/auth.ts`: PBKDF2-HMAC-SHA-256 password verification (constant-time), in-memory session store, HttpOnly/SameSite=Strict cookies, rate limiting (5 failed attempts → 15-minute lockout)
+  - `web/api/router.ts`: API dispatcher with CORS, security headers (CSP, X-Frame-Options, X-Content-Type-Options), body size guard, Content-Type enforcement
+  - `web/api/agents.ts`: Full CRUD for agent files — list, get, create, update, toggle (enable/disable), rename, delete; path validation to prevent traversal attacks
+  - `web/scripts/hash-password.ts`: CLI utility to generate PBKDF2 password hashes without shell history exposure
+  - `web/test.ts`: API test suite with 15 test cases covering auth, CRUD, toggle, rename, delete, and path-traversal security
+  - `web/public/index.html`: Login page
+  - `web/public/dashboard.html`: Agent dashboard with sidebar and inline editor panel
+  - `web/public/css/main.css`: Dark-theme CSS design system with CSS custom properties (583 lines)
+  - `web/public/js/api.js`: Fetch wrapper (`credentials: include` on all requests)
+  - `web/public/js/auth.js`: Login form, logout, and auth redirect guard
+  - `web/public/js/agents.js`: Full agent management — list, select, toggle, rename, delete, create, search/filter
+  - `web/public/js/editor.js`: Inline text editor with auto-resize, Tab→2-spaces, save button
+- **Documentation**: Added comprehensive web app documentation
+  - `docs/web-app.md` (NEW): Complete web app guide — Quick Start, setup, env vars, password management, full REST API reference (all 9 endpoints with curl examples), test suite usage, troubleshooting
+  - `README.md` (UPDATED): Expanded web app section with quick reference and links
+  - `docs/getting-started.md` (UPDATED): Added web app reference for administrators
 
 ### Changed
+- **`.gitignore`**: Added `.github/` to exclude skills and internal tooling from commits
 - **Directory Structure**: All agent workspaces moved from `.agent/` to `.agents/`
   - Updated all agent definitions and documentation
   - Updated `.gitignore` to exclude `.agents/` folder

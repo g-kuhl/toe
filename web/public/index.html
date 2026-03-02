@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TOE Agent Manager — Login</title>
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body class="login-page">
+    <main class="login-card">
+      <h1 class="login-card__title">TOE Agent Manager</h1>
+      <hr class="login-card__divider" />
+      <form id="login-form" action="/api/login" method="POST">
+        <div class="login-form__group">
+          <label class="login-form__label" for="username">Username</label>
+          <input
+            id="username"
+            name="username"
+            type="text"
+            autocomplete="username"
+            required
+          />
+        </div>
+        <div class="login-form__group">
+          <label class="login-form__label" for="password">Password</label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            autocomplete="current-password"
+            required
+          />
+        </div>
+        <button id="login-submit" type="submit" class="btn-primary btn-full">
+          Sign In
+        </button>
+        <p
+          id="login-error"
+          class="login-form__error"
+          role="alert"
+          aria-live="polite"
+        ></p>
+      </form>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+  </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TOE Agent Manager — Dashboard</title>
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <header class="top-bar">
+      <span class="top-bar__name">TOE Agent Manager</span>
+      <button id="logout-button" class="top-bar__logout" type="button">
+        Logout
+      </button>
+    </header>
+
+    <div class="dashboard-body">
+      <aside class="sidebar">
+        <div class="sidebar__controls">
+          <button id="new-agent-btn" class="btn-secondary btn-new-agent" type="button">
+            + New Agent
+          </button>
+          <input id="search-input" type="search" placeholder="Search..." />
+          <p id="sidebar-status" class="status-message" aria-live="polite"></p>
+        </div>
+        <div id="agent-list" class="sidebar__list"></div>
+      </aside>
+
+      <section class="editor-panel">
+        <div id="editor-empty" class="editor-empty">
+          <div>
+            <p>Select an agent from the sidebar</p>
+            <p>or create a new one to get started.</p>
+          </div>
+        </div>
+
+        <div id="editor-content" class="is-hidden">
+          <div>
+            <h2 id="agent-name" class="editor-header__name">Agent</h2>
+            <hr />
+          </div>
+
+          <div>
+            <span class="section-label">Frontmatter</span>
+            <table class="frontmatter-table" aria-label="Agent frontmatter">
+              <tbody id="frontmatter-table"></tbody>
+            </table>
+          </div>
+
+          <div>
+            <span class="section-label">Content</span>
+            <textarea
+              id="agent-content"
+              spellcheck="false"
+              aria-label="Agent content"
+            ></textarea>
+          </div>
+
+          <div class="action-bar">
+            <button id="save-btn" class="btn-primary" type="button">Save</button>
+            <button id="toggle-btn" class="btn-secondary" type="button">
+              Toggle
+            </button>
+            <button id="rename-btn" class="btn-secondary" type="button">
+              Rename
+            </button>
+            <button id="delete-btn" class="btn-danger" type="button">
+              Delete
+            </button>
+          </div>
+          <p id="editor-status" class="status-message" aria-live="polite"></p>
+        </div>
+      </section>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/editor.js"></script>
+    <script src="js/agents.js"></script>
+    <script src="js/auth.js"></script>
+  </body>
+</html>

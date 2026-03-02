@@ -12,6 +12,8 @@ Thumbs.db
 # Agent workspace folders (generated during runtime)
 .agent/
 .agents/
+.github/
+
 
 # Old 
 old/

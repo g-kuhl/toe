@@ -87,3 +87,65 @@ These agent definitions are designed for use with AI agent orchestration systems
 ## License
 
 MIT License - See LICENSE file for details
+
+## Agent Manager Web App
+
+A lightweight browser-based dashboard for viewing and editing agent definition files in this repository. Built with Deno and vanilla JavaScript — no frameworks, no build tools, no dependencies.
+
+### Quick Start (30 seconds)
+
+```bash
+# Start the server
+deno run --allow-all web/server.ts
+
+# Open in browser
+# → http://localhost:8080
+
+# Login with default credentials
+# Username: admin
+# Password: changeme
+```
+
+### What It Does
+
+- **Browse Agents** — View all agent definitions (`.agent.md` files)
+- **Edit Live** — Modify agent instructions directly in the browser
+- **Instant Sync** — Changes saved to disk in real time
+- **Secure Access** — PBKDF2-encrypted passwords, session cookies, rate limiting
+- **REST API** — Full CRUD via JSON endpoints for programmatic access
+
+### Documentation
+
+**For complete setup, usage, and API reference**, see [Web App Guide](docs/web-app.md):
+
+- [Running the Server](docs/web-app.md#running-the-server) — Detailed setup and configuration
+- [Managing Passwords](docs/web-app.md#managing-passwords) — Generate and update hashes
+- [REST API Reference](docs/web-app.md#rest-api-reference) — All endpoints documented
+- [Running Tests](docs/web-app.md#running-the-test-suite) — Verify setup with test suite
+
+### Quick Reference
+
+**Change Default Password:**
+
+```bash
+# Generate secure hash
+deno run --allow-env web/scripts/hash-password.ts
+
+# Set as environment variable
+export TOE_ADMIN_PASSWORD_HASH="pbkdf2:sha256:1000:..."
+deno run --allow-all web/server.ts
+```
+
+**Run Automated Tests:**
+
+```bash
+deno run --allow-net web/test.ts
+```
+
+**Custom Port & Agent Directory:**
+
+```bash
+PORT=3000 TOE_AGENT_ROOT=/custom/path deno run --allow-all web/server.ts
+```
+
+For more details, see [docs/web-app.md](docs/web-app.md).

@@ -66,7 +66,7 @@ Before approving a pull request or change, verify:
 - [ ] Are public APIs documented?
 - [ ] Are configuration options documented?
 - [ ] Is the README updated if behavior changes?
-- [ ] Is the CHANGELOG updated with new features/fixes?
+- [ ] Is the CHANGELOG updated with new features/fixes? (See `Version and Changelog Management`.)
 
 ### 9. Git & Commit Quality
 - [ ] Are commit messages clear and descriptive?

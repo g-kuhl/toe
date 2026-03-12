@@ -15,21 +15,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Email Communication System**: Agents now use `.agents/email/` for async communication
   - Email format: `to-[name]-from-[yourname].email`
   - Replaces the previous inbox system
-- **Agent Manager Web App**: Complete Deno/TypeScript web server for managing `.agent.md` files via browser
-  - `web/server.ts`: HTTP server entry point using `Deno.serve`; serves static files from `web/public/`; configurable via env vars (`PORT`, `TOE_AGENT_ROOT`, `TOE_ADMIN_USERNAME`, `TOE_ADMIN_PASSWORD_HASH`)
-  - `web/config.ts`: Centralised configuration with `SESSION_TTL_MS` (8h), `MAX_BODY_BYTES` (512 KB), `MAX_AGENT_CONTENT_BYTES` (256 KB)
-  - `web/auth.ts`: PBKDF2-HMAC-SHA-256 password verification (constant-time), in-memory session store, HttpOnly/SameSite=Strict cookies, rate limiting (5 failed attempts → 15-minute lockout)
-  - `web/api/router.ts`: API dispatcher with CORS, security headers (CSP, X-Frame-Options, X-Content-Type-Options), body size guard, Content-Type enforcement
-  - `web/api/agents.ts`: Full CRUD for agent files — list, get, create, update, toggle (enable/disable), rename, delete; path validation to prevent traversal attacks
-  - `web/scripts/hash-password.ts`: CLI utility to generate PBKDF2 password hashes without shell history exposure
-  - `web/test.ts`: API test suite with 15 test cases covering auth, CRUD, toggle, rename, delete, and path-traversal security
-  - `web/public/index.html`: Login page
-  - `web/public/dashboard.html`: Agent dashboard with sidebar and inline editor panel
-  - `web/public/css/main.css`: Dark-theme CSS design system with CSS custom properties (583 lines)
-  - `web/public/js/api.js`: Fetch wrapper (`credentials: include` on all requests)
-  - `web/public/js/auth.js`: Login form, logout, and auth redirect guard
-  - `web/public/js/agents.js`: Full agent management — list, select, toggle, rename, delete, create, search/filter
-  - `web/public/js/editor.js`: Inline text editor with auto-resize, Tab→2-spaces, save button
+- **Skills Directory** (`.agents/skills/`): New centralized location for reusable agent skills
+  - Archive Email
+  - Code Review Standards
+  - Create Office
+  - Create Workspace
+  - Deno Server Scaffold
+  - Deno Web App Scaffold
+  - Hire Team Member
+  - Read Email
+  - Teach
+  - Version and Changelog Management
+  - Write Email
+- **Morpheus Agent Enhancements**:
+  - Built-In Skills Catalog with pre-built skills available for deployment in projects
+  - Simplified skill creation workflow using the `Teach` skill for standardized procedures
+- **Project Manager Agent Comprehensive Overhaul**:
+  - Added workflow and stopping rules for proper project coordination
+  - Office and workspace management using dedicated skills
+  - Team roster tracking (`.agents/team-roster.md`)
+  - Expert roster table with all available agent specializations and engagement criteria
+  - Clear guidelines for hiring, assigning, and managing team members
 - **Documentation**: Added comprehensive web app documentation
   - `docs/web-app.md` (NEW): Complete web app guide — Quick Start, setup, env vars, password management, full REST API reference (all 9 endpoints with curl examples), test suite usage, troubleshooting
   - `README.md` (UPDATED): Expanded web app section with quick reference and links
@@ -37,12 +43,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - **`.gitignore`**: Added `.github/` to exclude skills and internal tooling from commits
-- **Directory Structure**: All agent workspaces moved from `.agent/` to `.agents/`
+- **Directory Structure**: 
+  - All agent workspaces moved from `.agent/` to `.agents/`
   - Updated all agent definitions and documentation
   - Updated `.gitignore` to exclude `.agents/` folder
+  - Skills location updated from `.github/skills/` to `.agents/skills/`
 - **Developer Agent Split**: Original Developer agent split into distinct Junior and Senior roles
   - Junior Developer: Straightforward tasks, bug fixes, smaller features
   - Senior Developer: Complex architecture, code reviews, mentoring
+- **Technology Stack & Standards** (new section in both Junior and Senior Developer agents):
+  - Enforces Deno-only for server-side JavaScript
+  - Mandates vanilla JavaScript/TypeScript on front-end (no frameworks)
+  - Prohibits Node.js, npm, Bun, CDNs, and heavy frameworks
+  - Establishes dependency priority: Deno stdlib → JSR → NPM (last resort, via Deno)
+  - Junior Developer: Added priority for vanilla code to Guidelines
+  - Senior Developer: Added enforcement of technology standards and mentoring on Deno best practices to Guidelines
+- **Morpheus Agent**:
+  - Refactored skill creation process to use the `Teach` skill for consistency
+  - Updated skill directory naming convention (human-readable names instead of kebab-case)
+  - Added Built-In Skills Catalog documenting pre-built skills for rapid deployment
+- **Project Manager Agent**: Major restructure for improved project coordination
+  - Added explicit workflow steps (planning, hiring, assigning, reviewing)
+  - Added office and workspace management integration
+  - Introduced team roster tracking and regular team reviews
+  - Added expert roster table mapping team member roles to engagement criteria
+  - Replaced inline instructions with structured constraint sections (STOPPING_RULES, workflow, office, workspace, onboarding, team_roster, EXPERTS)
 - **DevOps Agent**: Refactored with clearer responsibilities and simplified structure
 - **All Agent Definitions**: Simplified and restructured for clarity
   - Clearer Prime Directives
@@ -52,40 +77,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Documentation**: All references to `.agent/` updated to `.agents/` across docs
 
 ### Removed
-- **Director Agent**: Responsibilities merged into Project Manager agent
-  - Project Manager is now the primary entry point and orchestrator
-  - User interacts directly with Project Manager who coordinates all agents
-  - All references to Director throughout documentation updated to Project Manager
-- **Inbox Communication System**: Replaced by email-based communication
-- `Developer.agent.md`: Split into Junior Developer and Senior Developer
-- `Devops.agent.md`: Replaced by properly cased `DevOps.agent.md`
-- Old agent file structures and outdated communication patterns
-
----
-
-### Changed
-- **Office Terminology**: All `.agent/` folders now referred to as "offices"
-  - Updated all agent definitions to use "office" instead of "workspace"
-  - Each agent maintains their own office (`.agent/[agent-name]/`)
-  - Added office cleanup instructions to all agents
-  - Project Manager instructs teams to clean up offices when work completes
-  - Remove outdated files and keep only necessary artifacts
-- Updated documentation to reflect office terminology
-
-### Added
-- **SVG Icon Workflow**: Designer now creates complete SVG icon sets for projects
-  - Icon set development in `.agent/designer/icons/`
-  - Includes favicons for web projects
-  - Designer provides icon usage guides
-  - Developer uses Designer's SVGs (no icon libraries)
-- **Communication Guidelines**: Minimal emoji usage policy for all agents
-  - Allowed: ✅ (checkmarks), ❌ (X marks), ℹ️ (info), ⚠️ (warnings), 🚫 (errors)
-  - No other emojis - professional, clean communication
-
-### Changed
-- Designer agent: Added SVG icon creation workflow and best practices
-- Developer agent: Added guidance on using Designer's SVG icons
-- All agents: Added minimal emoji usage policy
+- **web/ directory**: Entire web app and all supporting files deleted
+  - Removed server infrastructure (server.ts, config.ts, auth.ts, router.ts)
+  - Removed frontend assets (HTML, CSS, JavaScript files)
+  - Removed API endpoints and authentication system
+  - Removed test suite (web/test.ts) and password hashing utility
+- **docs/ directory**: Documentation files removed
+  - agent-reference.md
+  - architecture.md
+  - examples.md
+  - getting-started.md
+  - web-app.md
 
 ## [0.2.0] - 2026-02-14
 

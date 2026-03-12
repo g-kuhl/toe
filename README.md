@@ -18,6 +18,7 @@ This repository contains agent definitions for a Project Manager-led team of spe
 - **Documentation Specialist** - Creates user guides, API docs, and technical documentation
 
 ### Specialized Team
+- **API Designer** - Designs API contracts, OpenAPI specifications, and REST/GraphQL standards
 - **Database Engineer** - Designs databases, optimizes queries, manages schemas
 - **DevOps** - Manages infrastructure, CI/CD pipelines, and deployments
 - **Data Engineer** - Builds ETL pipelines, data processing workflows
@@ -27,6 +28,26 @@ This repository contains agent definitions for a Project Manager-led team of spe
 ### Support Team
 - **Janitor** - Organizes workspaces and archives project history after completion
 - **Morpheus** - Creates custom agent skills and side-loads them into projects
+
+## Available Skills
+
+These reusable skills extend agent capabilities across the team:
+
+- **Archive Email** - Archives and retrieves email messages from project history
+- **Code Review Standards** - Establishes code quality guidelines and review processes
+- **Create Office** - Sets up dedicated agent workspaces and office directories
+- **Create Workspace** - Initializes project workspaces with proper structure
+- **Debugging** - Structured debugging process for Deno/TypeScript applications
+- **Deno Server Scaffold** - Scaffolds production-ready Deno server projects
+- **Deno Web App Scaffold** - Scaffolds Deno-based web application projects
+- **Hire Team Member** - Onboards new agents with proper training and setup
+- **Incident Response** - Handles production incidents from detection through post-mortem
+- **Memory** - Agents maintain persistent context across sessions via memory.md files
+- **Read Email** - Retrieves and processes email messages from agent inboxes
+- **Teach** - Creates standardized agent skills and procedures
+- **Technical Specification** - Writing tech specs before implementing complex features
+- **Version and Changelog Management** - Manages semantic versioning and release notes
+- **Write Email** - Composes and sends async messages between agents
 
 ## How It Works
 

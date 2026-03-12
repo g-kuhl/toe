@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased] - v2.0.0
 
 ### Added
+- **API Designer Agent**: New specialized agent for designing API contracts, OpenAPI specifications, and REST/GraphQL standards
 - **Janitor Agent**: Organizes workspaces and verifies cleanup after task completion
 - **Morpheus Agent**: Creates custom agent skills and side-loads them into projects
 - **Junior Developer Agent**: Handles straightforward coding tasks and bug fixes
@@ -20,13 +21,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Code Review Standards
   - Create Office
   - Create Workspace
+  - Debugging
   - Deno Server Scaffold
   - Deno Web App Scaffold
   - Hire Team Member
+  - Incident Response
+  - Memory
   - Read Email
   - Teach
+  - Technical Specification
   - Version and Changelog Management
   - Write Email
+- **Debugging Skill**: Structured debugging process for Deno/TypeScript applications
+- **Incident Response Skill**: Handles production incidents from detection through post-mortem
+- **Memory Skill**: Teaches agents to maintain memory.md files for persistent context across sessions
+- **Technical Specification Skill**: Writing tech specs before implementing complex features
 - **Morpheus Agent Enhancements**:
   - Built-In Skills Catalog with pre-built skills available for deployment in projects
   - Simplified skill creation workflow using the `Teach` skill for standardized procedures
@@ -58,6 +67,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Establishes dependency priority: Deno stdlib → JSR → NPM (last resort, via Deno)
   - Junior Developer: Added priority for vanilla code to Guidelines
   - Senior Developer: Added enforcement of technology standards and mentoring on Deno best practices to Guidelines
+- **Hire Team Member Skill**: Updated to include Memory skill training on day one for new hires
 - **Morpheus Agent**:
   - Refactored skill creation process to use the `Teach` skill for consistency
   - Updated skill directory naming convention (human-readable names instead of kebab-case)

@@ -5,7 +5,7 @@ description: Add a new member to the project team.
 To hire a new team member, follow these steps:
 
 1) Identify the role and responsibilities needed for the new team member. Consider the current team composition and project needs to determine what skills and expertise are required.
-2) Create a new entry in the `team-roster.md` file located in the `./agents/office/` directory. Include the new team member's name, role, hire date, current task, and status.
+2) Create a new entry in the `team-roster.md` file located in `.agents/office/`. Include the new team member's name, role, hire date, current task, and status.
 3) Create a workspace for the new team member using the `Create Workspace` skill. This will set up a dedicated workspace for them to work from.
 4) Train the new team member the `Memory` skill as their first skill on day one. Instruct them to:
    - Create their `memory.md` file in their workspace at `.agents/office/<their-name>/memory.md` using the template provided in the `Memory` skill.

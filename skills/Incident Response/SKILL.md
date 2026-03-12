@@ -74,7 +74,7 @@ Use the `Debugging` skill for application-level bugs found during investigation.
 
 ## Phase 5: Post-Mortem
 
-Write a post-mortem within 24 hours of resolution. Save it to `.agents/devops/incidents/` or `.agents/security/incidents/` as appropriate.
+Write a post-mortem within 24 hours of resolution. Save it to `.agents/office/devops/incidents/` or `.agents/office/security/incidents/` as appropriate.
 
 ### Post-Mortem Template
 

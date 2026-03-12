@@ -2,17 +2,18 @@
 name: Create Office
 description: Create a new office space for a team or project.
 ---
-All agent work should be done in the office. To create an office, create a new folder in `./agents/office/`. All workspaces and other related files will be created in this folder. 
+All agent work should be organized under `.agents/office/`. To create an office, create a new folder in `.agents/office/`. All workspaces and related files live inside it.
 
-Workspaces can be created withing the office using the `Create Workspace` skill. Workspaces are where agents will work from. Never in the office directly. The office is for organizing workspaces and other related files.
+Workspaces can be created within the office using the `Create Workspace` skill. Workspaces are where agents do their actual work. Do not work directly in the office root.
 
 Office Structure:
-`.agents/office/` will contain a `team-roster.md` file with information about the team members and their roles. Each workspace will be a subfolder within the office, named after the agent.
 
-`.agents/office/email/` will contain all email communications between team members. Each inbox will be a sub-folder named after the TO: recepient, and each email will dated.
+`.agents/office/` contains a `team-roster.md` file with information about team members and roles. Each workspace is a subfolder named after the agent.
 
-`.agents/office/email/archive/` will contain archived emails that have been read and summarized. Each inbox will be a sub-folder named after the TO: recepient, and each email will dated.
+`.agents/office/email/` contains all email communication between team members. Each inbox is a subfolder named after the recipient, and each email is dated.
 
-`.agents/office/tasks/` will contain all sprints and work that is deligated and tracked here for project management purposes. Each sprint will be a separate file named in the format `sprint-[number].md`.
+`.agents/office/email/archive/` contains archived emails that have been read and summarized.
 
-`.agents/office/cleanup-summary.md` will contain a summary of the cleanup process, including what was removed and what was preserved.
+`.agents/office/tasks/` contains delegated work and sprint tracking files such as `sprint-[number].md`.
+
+`.agents/office/cleanup-summary.md` summarizes what was removed and what was preserved during cleanup.

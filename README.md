@@ -65,6 +65,19 @@ These reusable skills extend agent capabilities across the team:
 - **Quality Focus** - Testing and documentation are first-class concerns
 - **Deno-Only Architecture** - NEVER Node.js, npm, or frameworks; pure Deno/TypeScript only
 
+## Agent Workspace & Communication Conventions
+
+The current standard for agent operations is:
+
+- Agent workspace: `.agents/office/<agent-name>/`
+- Team email inboxes: `.agents/office/email/<recipient-name>/`
+- Email archive: `.agents/office/email/archive/<recipient-name>/`
+- Skills directory: `.agents/skills/`
+
+Deprecated frontmatter note:
+
+- `user-invokable` is deprecated in agent files and should not be used in `*.agent.md`.
+
 ## Technology Stack
 
 ### ✅ ALLOWED

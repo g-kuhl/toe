@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Morpheus Agent**: Creates custom agent skills and side-loads them into projects
 - **Junior Developer Agent**: Handles straightforward coding tasks and bug fixes
 - **Senior Developer Agent**: Handles complex architecture and code reviews
-- **Email Communication System**: Agents now use `.agents/email/` for async communication
+- **Email Communication System**: Agents now use `.agents/office/email/` for async communication
   - Email format: `to-[name]-from-[yourname].email`
   - Replaces the previous inbox system
 - **Skills Directory** (`.agents/skills/`): New centralized location for reusable agent skills
@@ -51,6 +51,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `docs/getting-started.md` (UPDATED): Added web app reference for administrators
 
 ### Changed
+- **Agent and Skill Path Standardization**: Updated active agent and skill guidance to consistently use `.agents/office/<agent-name>/` workspaces and `.agents/office/email/` inboxes.
+- **Agent Instruction Condensation**: Reduced repeated communication boilerplate, removed dead commented instruction blocks, and simplified duplicated skill-creation guidance for lower context overhead.
 - **`.gitignore`**: Added `.github/` to exclude skills and internal tooling from commits
 - **Directory Structure**: 
   - All agent workspaces moved from `.agent/` to `.agents/`
@@ -87,6 +89,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Documentation**: All references to `.agent/` updated to `.agents/` across docs
 
 ### Removed
+- **Deprecated Frontmatter**: Removed deprecated `user-invokable` from active `*.agent.md` files.
 - **web/ directory**: Entire web app and all supporting files deleted
   - Removed server infrastructure (server.ts, config.ts, auth.ts, router.ts)
   - Removed frontend assets (HTML, CSS, JavaScript files)

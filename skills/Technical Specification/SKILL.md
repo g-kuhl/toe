@@ -23,13 +23,13 @@ Use this skill when a feature, change, or system is complex enough to warrant wr
 Save specs to the requesting agent's office directory:
 
 ```
-.agents/<agent_office>/specs/<feature-name>.md
+.agents/office/<agent_office>/specs/<feature-name>.md
 ```
 
 For example:
 ```
-.agents/senior_developer/specs/user-authentication.md
-.agents/architect/specs/caching-layer.md
+.agents/office/senior_developer/specs/user-authentication.md
+.agents/office/architect/specs/caching-layer.md
 ```
 
 ## Spec Format
